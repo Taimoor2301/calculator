@@ -3,28 +3,39 @@ function App() {
   const [lowerScreenText, setLowerScreenText] = useState("");
   const [upperScreenText, setUpperScreenText] = useState("");
   const [operator, setOperator] = useState("");
+  const [equalSign, setEqualSign] = useState("");
 
   const operators = ["+", "-", "/", "*", "%"];
 
   const screen = (e) => {
+    // clear
     if (e.target.value === "clear") {
       if (lowerScreenText === "") {
         setUpperScreenText("");
         setOperator("");
       } else {
         setLowerScreenText("");
+        setEqualSign("");
       }
 
       return;
-    } else if (e.target.value === "del") {
-      setLowerScreenText((old) => old.slice(0, -1));
+    }
+    //del
+    else if (e.target.value === "del") {
+      lowerScreenText && setLowerScreenText((old) => old.slice(0, -1));
+      setEqualSign("");
       return;
-    } else if (operators.includes(e.target.value)) {
+    }
+    //operator
+    else if (operators.includes(e.target.value)) {
       setUpperScreenText(lowerScreenText);
       setOperator(e.target.value);
       setLowerScreenText("");
+      setEqualSign("");
       return;
-    } else if (e.target.value === "=") {
+    }
+    //result
+    else if (e.target.value === "=") {
       let result = eval(`${upperScreenText}${operator}${lowerScreenText}`);
 
       if (
@@ -34,9 +45,11 @@ function App() {
         result = result.toFixed(4);
       }
       setUpperScreenText(`${upperScreenText} ${operator} ${lowerScreenText}`);
-      setOperator("=");
-      setLowerScreenText(result);
-    } else {
+      setEqualSign("=");
+      setLowerScreenText(result.toString());
+    }
+    //regular update
+    else {
       setLowerScreenText((old) => old + e.target.value);
     }
   };
@@ -46,10 +59,10 @@ function App() {
         <div className="calculator my-3  shadow bg-indigo-700 p-5 rounded-lg w-[360px]">
           <div className=" mt-1 mb-5 text-right font-semibold">
             <div className="text-xl p-2 rounded bg-indigo-100 mb-1 min-h-[4rem] break-words">
-              {upperScreenText || "Hey there.."} <span>{operator}</span>
+              {upperScreenText}
             </div>
             <div className="text-3xl py-4 px-2 min-h-[4.5rem] bg-white rounded break-words">
-              {lowerScreenText}
+              <span>{equalSign}</span> {lowerScreenText}
             </div>
           </div>
 
