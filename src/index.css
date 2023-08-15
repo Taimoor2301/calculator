@@ -1,3 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.buttons > button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 63px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  margin-top: 5px;
+  /* box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.09); */
+  box-shadow: 3px 0px 10px 0px rgba(0, 0, 0, 0.15) inset;
+}
+.number {
+  background-color: white;
+  box-shadow: 2px 1px 5px 1px rgba(0, 0, 0, 0.15) inset !important;
+}
+.screen {
+  box-shadow: -3px -3px 5px 1px rgba(0, 0, 0, 0.03) inset,
+    1px 1px 5px 1px rgba(0, 0, 0, 0.08) inset;
+  background-color: white;
+}
+
+.equal {
+  background: rgb(255, 200, 61);
+  color: white;
+  font-size: 2.3rem;
+}
+
+.operator {
+  background-color: rgb(200, 147, 238);
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+  box-shadow: 3px 1px 5px 1px rgba(0, 0, 0, 0.35) inset !important;
+}
