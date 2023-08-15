@@ -20,6 +20,14 @@ function App() {
 
       return;
     }
+    //clear all
+    else if (e.target.value === "clearAll") {
+      setUpperScreenText("");
+      setLowerScreenText("");
+      setOperator("");
+      setEqualSign("");
+      return;
+    }
     //del
     else if (e.target.value === "del") {
       lowerScreenText && setLowerScreenText((old) => old.slice(0, -1));
@@ -53,22 +61,24 @@ function App() {
       setLowerScreenText((old) => old + e.target.value);
     }
   };
+
   return (
     <>
-      <div className="w-full h-screen flex justify-center items-center">
-        <div className="calculator my-3  shadow bg-indigo-700 p-5 rounded-lg w-[360px]">
-          <div className=" mt-1 mb-5 text-right font-semibold">
-            <div className="text-xl p-2 rounded bg-indigo-100 mb-1 min-h-[4rem] break-words">
+      <div className="w-full h-screen flex justify-center items-center bg-gray-300">
+        <div className="calculator my-3 shadow-lg bg-gray-50  p-5 rounded-3xl w-[320px] flex flex-col justify-end">
+          <div className=" mt-1 mb-5 text-right screen py-5 px-3 rounded-2xl">
+            <div className="text-xl  text-gray-500 min-h-[6rem] break-words">
               {upperScreenText}
             </div>
-            <div className="text-3xl py-4 px-2 min-h-[4.5rem] bg-white rounded break-words">
-              <span>{equalSign}</span> {lowerScreenText}
+            <div className="text-4xl font-semibold  text-gray-600  break-words">
+              <span className="mr-3 text-gray-400">{equalSign}</span>
+              {lowerScreenText}
             </div>
           </div>
 
-          <div className="buttons grid grid-cols-4 gap-1 text-3xl">
+          <div className="buttons grid grid-cols-4 gap-1 text-xl text-gray-600">
             <button
-              className="flex justify-center items-center bg-white hover:bg-indigo-300 font-semibold  py-3 col-span-2"
+              className="bg-gray-200 hover:bg-gray-300 text-gray-600 font-bold"
               value="clear"
               onClick={(e) => screen(e)}
             >
@@ -76,131 +86,71 @@ function App() {
             </button>
 
             <button
-              className="flex justify-center items-center bg-white hover:bg-indigo-300 font-semibold "
+              className="bg-gray-200 hover:bg-gray-300 text-gray-600 font-bold"
+              value="clearAll"
+              onClick={(e) => screen(e)}
+            >
+              CE
+            </button>
+
+            <button
+              className="bg-gray-200 hover:bg-gray-300 text-gray-600 font-bold"
               value="del"
               onClick={(e) => screen(e)}
             >
               DEL
             </button>
-            <button
-              className="flex justify-center items-center bg-white hover:bg-indigo-300 font-semibold "
-              value="/"
-              onClick={(e) => screen(e)}
-            >
+            <button className="operator" value="/" onClick={(e) => screen(e)}>
               /
             </button>
 
-            <button
-              className="flex justify-center items-center bg-white hover:bg-indigo-300 font-semibold  py-3"
-              value="7"
-              onClick={(e) => screen(e)}
-            >
+            <button className="number" value="7" onClick={(e) => screen(e)}>
               7
             </button>
-            <button
-              className="flex justify-center items-center bg-white hover:bg-indigo-300 font-semibold "
-              value="8"
-              onClick={(e) => screen(e)}
-            >
+            <button className="number" value="8" onClick={(e) => screen(e)}>
               8
             </button>
-            <button
-              className="flex justify-center items-center bg-white hover:bg-indigo-300 font-semibold "
-              value="9"
-              onClick={(e) => screen(e)}
-            >
+            <button className="number" value="9" onClick={(e) => screen(e)}>
               9
             </button>
-            <button
-              className="flex justify-center items-center bg-white hover:bg-indigo-300 font-semibold "
-              value="*"
-              onClick={(e) => screen(e)}
-            >
+            <button className="operator" value="*" onClick={(e) => screen(e)}>
               *
             </button>
-            <button
-              className="flex justify-center items-center bg-white hover:bg-indigo-300 font-semibold  py-3"
-              value="4"
-              onClick={(e) => screen(e)}
-            >
+            <button className="number" value="4" onClick={(e) => screen(e)}>
               4
             </button>
-            <button
-              className="flex justify-center items-center bg-white hover:bg-indigo-300 font-semibold "
-              value="5"
-              onClick={(e) => screen(e)}
-            >
+            <button className="number" value="5" onClick={(e) => screen(e)}>
               5
             </button>
-            <button
-              className="flex justify-center items-center bg-white hover:bg-indigo-300 font-semibold "
-              value="6"
-              onClick={(e) => screen(e)}
-            >
+            <button className="number" value="6" onClick={(e) => screen(e)}>
               6
             </button>
-            <button
-              className="flex justify-center items-center bg-white hover:bg-indigo-300 font-semibold "
-              value="-"
-              onClick={(e) => screen(e)}
-            >
+            <button className="operator" value="-" onClick={(e) => screen(e)}>
               -
             </button>
-            <button
-              className="flex justify-center items-center bg-white hover:bg-indigo-300 font-semibold  py-3"
-              value="1"
-              onClick={(e) => screen(e)}
-            >
+            <button className="number" value="1" onClick={(e) => screen(e)}>
               1
             </button>
-            <button
-              className="flex justify-center items-center bg-white hover:bg-indigo-300 font-semibold "
-              value="2"
-              onClick={(e) => screen(e)}
-            >
+            <button className="number" value="2" onClick={(e) => screen(e)}>
               2
             </button>
-            <button
-              className="flex justify-center items-center bg-white hover:bg-indigo-300 font-semibold "
-              value="3"
-              onClick={(e) => screen(e)}
-            >
+            <button className="number" value="3" onClick={(e) => screen(e)}>
               3
             </button>
-            <button
-              className="flex justify-center items-center bg-white hover:bg-indigo-300 font-semibold "
-              value="+"
-              onClick={(e) => screen(e)}
-            >
+            <button className="operator" value="+" onClick={(e) => screen(e)}>
               +
             </button>
-            <button
-              className="flex justify-center items-center bg-white hover:bg-indigo-300 font-semibold  py-3"
-              value="0"
-              onClick={(e) => screen(e)}
-            >
+            <button className="number" value="0" onClick={(e) => screen(e)}>
               0
             </button>
 
-            <button
-              className="flex justify-center items-center bg-white hover:bg-indigo-300 font-semibold "
-              value="."
-              onClick={(e) => screen(e)}
-            >
+            <button className="number" value="." onClick={(e) => screen(e)}>
               .
             </button>
-            <button
-              className="flex justify-center items-center bg-white hover:bg-indigo-300 font-semibold "
-              value="="
-              onClick={(e) => screen(e)}
-            >
+            <button className="equal" value="=" onClick={(e) => screen(e)}>
               =
             </button>
-            <button
-              className="flex justify-center items-center bg-white hover:bg-indigo-300 font-semibold "
-              value="%"
-              onClick={(e) => screen(e)}
-            >
+            <button className="operator" value="%" onClick={(e) => screen(e)}>
               %
             </button>
           </div>
