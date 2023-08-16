@@ -64,9 +64,9 @@ function App() {
 
   return (
     <>
-      <div className="w-full h-screen flex justify-center items-center bg-gray-300">
-        <div className="calculator my-3 shadow-lg bg-gray-50  p-5 rounded-3xl w-[320px] flex flex-col justify-end">
-          <div className=" mt-1 mb-5 text-right screen py-5 px-3 rounded-2xl">
+      <div className="w-full h-screen flex justify-center items-center bg-gray-800">
+        <div className="calculator my-3  shadow  bg-white  p-5 rounded-3xl w-[320px] flex flex-col justify-end">
+          <div className=" mt-1 mb-5 text-right screen border-2 border-gray-400  py-5 px-3 rounded-2xl">
             <div className="text-xl  text-gray-500 min-h-[6rem] break-words">
               {upperScreenText}
             </div>
